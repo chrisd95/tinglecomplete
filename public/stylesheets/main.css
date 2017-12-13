@@ -1,7 +1,7 @@
 .jumbotron {
   background: white;
   color: white;
-  padding-bottom: 380px; }
+  padding-bottom: 310px; }
   .jumbotron .btn-primary {
     background: #A0A0A0;
     border-color: #C0BFBF; }
@@ -23,3 +23,74 @@
     border: 2px solid white; }
     .jumbotron .lang-logo img {
       max-width: 100%; }
+
+/*Added fit style to fit images*/
+* {
+        padding: 0;
+        margin: 0;
+      }
+.fit {
+        max-width: 100%;
+        max-height: 100%;
+      }
+.center {
+        display: block;
+        margin-top: 15%;
+        margin-left: 23%;
+      }
+/*This is the styling for wrapper*/
+
+.wrapper {
+  width: 0px;
+  margin: 0px ;
+
+}
+
+
+
+/*This is the styling for the icon boxes*/
+.flip3D{ float: left; width: 16.6%; height: 200px; margin-right: 0px; margin-bottom: 1px }
+
+.flip3D > .front{
+      	position:absolute;
+      	transform: perspective( 1000px ) rotateY( 0deg );
+      	background:#FEF945; width:237px; height:200px; border-radius: 0px;
+      	backface-visibility: hidden;
+      	transition: transform .2s linear 0s;
+      }
+      .flip3D > .back{
+      	position:absolute;
+      	transform: perspective( 600px ) rotateY( 180deg );
+      	background: #F7F5AE; width:237px; height:200px; border-radius: 7px;
+      	backface-visibility: hidden;
+      	transition: transform .2s linear 0s;
+      }
+      .flip3D:hover > .front{
+      	transform: perspective( 600px ) rotateY( -180deg );
+      }
+      .flip3D:hover > .back{
+      	transform: perspective( 600px ) rotateY( 0deg );
+      }
+
+/*This is the styling for the icon boxes b (checker-style array)*/
+.flip3Db{ float: left; width: 16.6%; height: 200px; margin-right: 0px; margin-bottom: 1px }
+      .flip3Db > .front{
+      	position:absolute;
+      	transform: perspective( 1000px ) rotateY( 0deg );
+      	background:#77FEEC; width:237px; height:200px; border-radius: 0px;
+      	backface-visibility: hidden;
+      	transition: transform .15s linear 0s;
+      }
+      .flip3Db > .back{
+      	position:absolute;
+      	transform: perspective( 600px ) rotateY( 180deg );
+      	background: #BFFFF7; width:237px; height:200px; border-radius: 7px;
+      	backface-visibility: hidden;
+      	transition: transform .15s linear 0s;
+      }
+      .flip3Db:hover > .front{
+      	transform: perspective( 600px ) rotateY( -180deg );
+      }
+      .flip3Db:hover > .back{
+      	transform: perspective( 600px ) rotateY( 0deg );
+      }

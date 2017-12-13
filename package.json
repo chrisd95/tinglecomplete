@@ -12,15 +12,17 @@
   },
   "dependencies": {
     "ejs": "^2.5.6",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "mongoose": "^4.13.7"
   },
   "devDependencies": {
+    "nodemon": "^1.12.6",
     "request": "^2.81.0",
     "tape": "^4.7.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/chrisd95/tinglemongoose"
+    "url": "https://github.com/ilchinr/tingle"
   },
   "keywords": [
     "node",
