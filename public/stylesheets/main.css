@@ -11,8 +11,15 @@
     color: #DACF63;
     max-width: 100%;
     margin: 1em auto 2em; }
-  .navbar + .jumbotron {
-    margin-top: 0px; }
+  .navbar{
+      height: 10px;
+      position:fixed;
+      width: 100%;
+      z-index: 10;
+     }
+  .jumbotron{
+    margin-top: 0px;
+  }
   .jumbotron .lang-logo {
     background: #B01302;
     border-radius: 50%;

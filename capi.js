@@ -18,3 +18,7 @@ var cointicker = JSON.parse(data)
 console.log(cointicker);
 
 console.log('BTCUSD price was updated.')
+
+$.getJSON('cointicker.json',function (data){
+  console.log('It worked.. kinda.')
+});
