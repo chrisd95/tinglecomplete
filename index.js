@@ -5,9 +5,9 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var path = require('path');
 var fs = require ('fs');
+var lol;
 
 
-mongoose.Promise = global.Promise
 //models
 var Book = require('./models/Book.model');
 var Coin = require('./models/Coin.model');
@@ -32,8 +32,11 @@ express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index',{btcticker:btcticker}))
+  .get('/', (req, res) => res.render('pages/index',{btcticker:lol}))
+
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+  //var btcticker=23456;
+  //var btcticker = "fdsafas"
 //VIEW ENGINE EJS (END)
 
 //PORTMAN ADD-ON (START)
@@ -72,7 +75,8 @@ const request = require('request')
 request.get('http://localhost:8080/coins/5a34b7c60c162c5ea0601337',
   function(error,response, body) {
     var btcticker = (body);
-    fs.writeFileSync('cointicker.json', btcticker, finished);
+    lol = btcticker
+    fs.writeFileSync('cointicker.json', lol, finished);
       function finished(err){
       }
 })
