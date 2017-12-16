@@ -3,7 +3,6 @@ var Schema = mongoose.Schema;
 
 var usersSchema = new Schema({
   name: String
-
 });
 
-mongoose.model('users', usersSchema);
+module.exports = mongoose.model('users', usersSchema);
