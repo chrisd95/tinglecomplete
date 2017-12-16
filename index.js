@@ -1,65 +1,179 @@
-const express = require('express')
-const path = require('path')
-const PORT = process.env.PORT || 5000
-var fs = require('fs');
+//REQUIREMENTS (START)
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var path = require('path');
+var fs = require ('fs');
+
+mongoose.Promise = global.Promise
+
+//models
+var Book = require('./models/Book.model');
+var Coin = require('./models/Coin.model');
+//REQUIREMENTS (END)
 
 
 
-var btcticker=16303.34;
+//PORTS (START)
+  //WEBSITE PORT
+var PORT = process.env.PORT || 5000
+  //SERVER PORT
+var port = 8080;
+//PORTS (END)
 
+
+//DATABASE CONNECTION
+var db = 'mongodb://localhost/example'
+mongoose.connect(db);
+
+//VIEW ENGINE EJS (START)
 express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index',{btcticker:btcticker}))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+//VIEW ENGINE EJS (END)
+
+//PORTMAN ADD-ON (START)
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+//PORTMAN ADD-ON (END)
 
 
-  // Connect to mongodb localhost (START) = localconnection.js
-
-  mongoose.connect('mongodb://localhost/data/db/test_1');
-
-  mongoose.connection.once('open', function(){
-    console.log('Local connection has been made.');
-  }).on('error', function(error){
-    console.log('Connection error', error);
-  });
-  // Connect to mongodb localhost (END) = localconnection.js
-
-
-
-
-//Cookie practice log (START) = cookielog.js
-  var app = express();
-
-  app.get('/', function(req, resp){
-    resp.cookie('myFirstCookie', 'looks Good');
-    resp.end('This is ma server');
-  });
-
-  app.listen(1337, function(){
-    console.log('Yeah?');
-  });
-//Cookie practice log (END) = cookielog.js
-
-//load all files in models dir (START) = modelloader.js
-fs.readdirSync(__dirname + '/models').forEach(function(filename) {
-  if (~filename.indexOf('.js')) require(__dirname + '/models/' + filename)
+//SERVER PORT MSG (START)
+app.get('/', function(req, res) {
+  res.send('happy to be here');
 });
+//SERVER PORT MSG (END)
 
 
-app.get('/users', function(req, res) {
-  mongoose.model('users').find(function(err, users) {
-    res.send(users);
-  });
-});
-
-app.get('/posts/:userId', function(req, res) {
-  mongoose.model('posts').find({user: req.params.userId}, function(err, posts) {
-    mongoose.model('posts').populate(posts, {path: 'user'}, function(err, posts) {
-      res.send(posts);
+//GET. ALL BOOKS QUERY (START)
+app.get('/books', function(req, res) {
+  console.log('getting all books');
+  Book.find({})
+    .exec(function(err, books) {
+      if(err) {
+        res.send('error occured')
+      } else {
+        console.log(books);
+        res.json(books);
+      }
     });
+});
+//GET. ALL BOOKS QUERY (END)
+
+
+//HTTP request BTCTICKER (START)
+const request = require('request')
+request.get('http://localhost:8080/coins/5a34b7c60c162c5ea0601337',
+  function(error,response, body) {
+    var btcticker = (body);
+    fs.writeFileSync('cointicker.json', btcticker, finished);
+      function finished(err){
+      }
+})
+//HTTP request BTCTICKER (END)
+
+
+//GET. ALL COINS QUERY (START)
+app.get('/coins', function(req, res) {
+  console.log('getting all coins');
+  Coin.find({})
+    .exec(function(err, coins) {
+      if(err) {
+        res.send('error occured')
+      } else {
+        console.log(coins);
+        res.json(coins);
+      }
+    });
+});
+
+//GET. ALL COINS QUERY (END)
+
+
+//link variable to response
+
+
+
+var query = {};
+//GET. SINGLE BOOKS (START)
+app.get('/coins/:id', function(req, res) {
+  console.log('getting all coins');
+  Coin.findOne({
+    _id: req.params.id
+  })
+    .exec(function(err, coins) {
+      if(err) {
+        res.send('error occured')
+      } else {
+        console.log(coins.price_usd);
+        res.json(coins.price_usd);
+      }
+    });
+});
+//GET. SINGLE BOOKS (END)
+
+
+//POST BOOKS (START)
+app.post('/book', function(req, res) {
+  var newBook = new Book();
+
+  newBook.title = req.body.title;
+  newBook.author = req.body.author;
+  newBook.category = req.body.category;
+
+  newBook.save(function(err, book) {
+    if(err) {
+      res.send('error saving book');
+    } else {
+      console.log(book);
+      res.send(book);
+    }
   });
 });
-//load all files in models dir (END) = modelloader.js
+//POST BOOKS (END)
+
+
+
+//PUT BOOKS (START)
+app.put('/book/:id', function(req, res) {
+  Book.findOneAndUpdate({
+    _id: req.params.id
+    },
+    { $set: { title: req.body.title }
+  }, {upsert: true}, function(err, newBook) {
+    if (err) {
+      res.send('error updating ');
+    } else {
+      console.log(newBook);
+      res.send(newBook);
+    }
+  });
+});
+//PUT BOOKS (END)
+
+//DELETE BOOKS (START)
+app.delete('/book/:id', function(req, res) {
+  Book.findOneAndRemove({
+    _id: req.params.id
+  }, function(err, book) {
+    if(err) {
+      res.send('error removing')
+    } else {
+      console.log(book);
+      res.status(204);
+    }
+  });
+});
+//DELETE BOOKS (END)
+
+
+//LISTEN
+app.listen(port, function() {
+  console.log('app listening on port ' + port);
+});
