@@ -5,14 +5,25 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var path = require('path');
 var fs = require ('fs');
+var EventEmitter = require('events')
+const request = require('request')
 var lol;
+var cmcbtcticker;
 
+//mongoose promise bluebird (START)
+mongoose.Promise = require('bluebird');
+//mongoose promise bluebird (END)
 
-//models
-var Book = require('./models/Book.model');
+//PORTMAN ADD-ON (START)
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+//PORTMAN ADD-ON (END)
+
+//REQUIRE MODELS (START)
 var Coin = require('./models/Coin.model');
-//REQUIREMENTS (END)
-
+//REQUIRE MODELS (START)
 
 
 //PORTS (START)
@@ -22,10 +33,18 @@ var PORT = process.env.PORT || 5000
 var port = 8080;
 //PORTS (END)
 
+// mongoose connection (START)
+var promise = mongoose.connect('mongodb://localhost/example', {
+  useMongoClient: true,
+  /* other options */
+});
+promise.then(function(db) {
+  /* Use `db`, for instance `db.model()`
+});
+// Or, if you already have a connection
+connection.openUri('mongodb://localhost/myapp', { /* options */ });
+// mongoose connection (END)
 
-//DATABASE CONNECTION
-var db = 'mongodb://localhost/example'
-mongoose.connect(db);
 
 //VIEW ENGINE EJS (START)
 express()
@@ -33,18 +52,8 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index',{btcticker:lol}))
-
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
-  //var btcticker=23456;
-  //var btcticker = "fdsafas"
+  .listen(PORT, () => console.log(`EJS displayed at port ${ PORT }`))
 //VIEW ENGINE EJS (END)
-
-//PORTMAN ADD-ON (START)
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
-//PORTMAN ADD-ON (END)
 
 
 //SERVER PORT MSG (START)
@@ -54,24 +63,9 @@ app.get('/', function(req, res) {
 //SERVER PORT MSG (END)
 
 
-//GET. ALL BOOKS QUERY (START)
-app.get('/books', function(req, res) {
-  console.log('getting all books');
-  Book.find({})
-    .exec(function(err, books) {
-      if(err) {
-        res.send('error occured')
-      } else {
-        console.log(books);
-        res.json(books);
-      }
-    });
-});
-//GET. ALL BOOKS QUERY (END)
 
 
-//HTTP request BTCTICKER (START)
-const request = require('request')
+//DISPLAY HTTP request BTCTICKER (START)
 request.get('http://localhost:8080/coins/5a34b7c60c162c5ea0601337',
   function(error,response, body) {
     var btcticker = (body);
@@ -80,12 +74,27 @@ request.get('http://localhost:8080/coins/5a34b7c60c162c5ea0601337',
       function finished(err){
       }
 })
+
+
+
+//looped getbtcticker
+var getbtcticker = function(){request.get('http://localhost:8080/coins/5a34b7c60c162c5ea0601337',
+  function(error,response, body) {
+    var btcticker = (body);
+    lol = btcticker
+    fs.writeFileSync('cointicker.json', lol, finished);
+      function finished(err){
+      }
+})}
+
+
+var interval = setInterval(getbtcticker, 10000)
 //HTTP request BTCTICKER (END)
 
 
-//GET. ALL COINS QUERY (START)
+//GET. ALL COINS API (START)
 app.get('/coins', function(req, res) {
-  console.log('getting all coins');
+  console.log('Getting all coins');
   Coin.find({})
     .exec(function(err, coins) {
       if(err) {
@@ -96,18 +105,11 @@ app.get('/coins', function(req, res) {
       }
     });
 });
+//GET. ALL COINS API (END)
 
-//GET. ALL COINS QUERY (END)
-
-
-//link variable to response
-
-
-
-var query = {};
-//GET. SINGLE BOOKS (START)
+//GET. SINGLE API (START)
 app.get('/coins/:id', function(req, res) {
-  console.log('getting all coins');
+  console.log('The price of the coin you searched is ');
   Coin.findOne({
     _id: req.params.id
   })
@@ -115,37 +117,42 @@ app.get('/coins/:id', function(req, res) {
       if(err) {
         res.send('error occured')
       } else {
-        console.log(coins.price_usd);
-        res.json(coins.price_usd);
+        console.log(coins);
+        res.json(coins);
       }
     });
 });
-//GET. SINGLE BOOKS (END)
+//GET. SINGLE API (END)
+
+var upbtcticker = function(){Coin.findByIdAndUpdate("5a34b7c60c162c5ea0601337",
+  {
+      "id": "bitcoin",
+      "name": "Bitcoin",
+      "symbol": "BTC",
+      "rank": "1",
+      "price_usd": "202403402",
+      "price_btc": "1.0",
+      "24h_volume_usd": "14404400000.0",
+      "market_cap_usd": "331053789610",
+      "available_supply": "16746700.0",
+      "total_supply": "16746700.0",
+      "max_supply": "21000000.0",
+      "percent_change_1h": "1.32",
+      "percent_change_24h": "10.38",
+      "percent_change_7d": "42.76",
+      "last_updated": "1513495754"
+  }
+      , {}, function(newCoin){
+    console.log(newCoin);
+  });}
+
+  var interval1 = setInterval(upbtcticker, 5000)
 
 
-//POST BOOKS (START)
-app.post('/book', function(req, res) {
-  var newBook = new Book();
-
-  newBook.title = req.body.title;
-  newBook.author = req.body.author;
-  newBook.category = req.body.category;
-
-  newBook.save(function(err, book) {
-    if(err) {
-      res.send('error saving book');
-    } else {
-      console.log(book);
-      res.send(book);
-    }
-  });
-});
-//POST BOOKS (END)
 
 
-
-//PUT BOOKS (START)
-app.put('/book/:id', function(req, res) {
+//UPDATE COINS (START)
+app.put('/coins/:id', function(req, res) {
   Book.findOneAndUpdate({
     _id: req.params.id
     },
@@ -159,7 +166,38 @@ app.put('/book/:id', function(req, res) {
     }
   });
 });
-//PUT BOOKS (END)
+//UPDATE COINS (END)
+
+
+
+
+//HTTP request BTCTICKER (START)
+request.get('https://api.coinmarketcap.com/v1/ticker/bitcoin/',
+  function(error,response, body) {
+    var what = (body);
+    var cmcbtcticker = what
+    fs.writeFileSync('cmc.json', cmcbtcticker, finished);
+      function finished(err){
+      }
+})
+
+// FIND AND UPDATE ONE DOCUMENT (START)
+var updatebtcticker = function (){Coin.findOneAndUpdate({
+  _id: "5a34b7c60c162c5ea0601337"
+  },
+  {$set: {cmcbtcticker
+      }}
+      , {upsert: true}, function(err, newCoin) {
+  if (err) {
+    res.send('error updating ');
+  } else {
+    console.log(newCoin);
+  }
+})};
+
+var interval1 = setInterval(updatebtcticker, 5000)
+// FIND AND UPDATE ONE DOCUMENT (START)
+
 
 //DELETE BOOKS (START)
 app.delete('/book/:id', function(req, res) {
@@ -179,5 +217,5 @@ app.delete('/book/:id', function(req, res) {
 
 //LISTEN
 app.listen(port, function() {
-  console.log('app listening on port ' + port);
+  console.log('Server displaying on port ' + port);
 });
