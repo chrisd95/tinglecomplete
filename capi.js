@@ -1,5 +1,4 @@
 var fs = require('fs');
-var jsonQuery = require('json-query')
 
 const request = require('request')
 request.get('https://api.bitfinex.com/v1/pubticker/BTCUSD',

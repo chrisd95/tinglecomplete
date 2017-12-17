@@ -1,11 +1,17 @@
-const mongoose = require('mongoose');
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser')
+var mongoose = require('mongoose');
+var users = require('./models/users.model')
 
-// Connect to mongodb
 
-mongoose.connect('mongodb://localhost/testserver');
+var db = 'mongodb://localhost/testserver';
 
-mongoose.connection.once('open', function(){
-  console.log('Local connection has been made.');
-}).on('error', function(error){
-  console.log('Connection error', error);
-});
+mongoose.connect(db);
+
+
+var port = 8080;
+
+app.listen(port,function(){
+    console.log('app listening on port' + port);
+})
