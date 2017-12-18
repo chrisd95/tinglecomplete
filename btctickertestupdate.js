@@ -1,5 +1,6 @@
 //btcticker looped
-
+var lol2;
+var lol3;
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -29,6 +30,16 @@ promise.then(function(db) {
 connection.openUri('mongodb://localhost/myapp', { /* options */ });
 // mongoose connection (END)
 
+//VIEW ENGINE EJS (START)
+express()
+  .use(express.static(path.join(__dirname, 'public')))
+  .set('views', path.join(__dirname, 'views'))
+  .set('view engine', 'ejs')
+  .get('/', (req, res) => res.render('./btctickertestupdate',{upbtcticker:lol2}))
+  .listen(PORT, () => console.log(`EJS displayed at port ${ PORT }`))
+//VIEW ENGINE EJS (END)
+
+
 
 //models
 var Book = require('./models/Book.model');
@@ -49,26 +60,21 @@ var getbtcticker = function(){request.get('https://api.coinmarketcap.com/v1/tick
 var interval = setInterval(getbtcticker, 10000)
 //HTTP request BTCTICKER (END)
 
-
-
+fs.readFile('./cmc.json', 'utf8', function(error, data) {
+  var lol2 = (data);
+  var lol2 = data.replace('[','').replace(']','');
+  console.log(lol2);
+})
+lol3 = bodyParser(lol2)
 Coin.findByIdAndUpdate("5a34b7c60c162c5ea0601337",
-  {
-      "id": "bitcoin",
-      "name": "Bitcoin",
-      "symbol": "BTC",
-      "rank": "1",
-      "price_usd": "ifosdajfidsoajfdisa",
-      "price_btc": "1.0",
-      "24h_volume_usd": "14404400000.0",
-      "market_cap_usd": "331053789610",
-      "available_supply": "16746700.0",
-      "total_supply": "16746700.0",
-      "max_supply": "21000000.0",
-      "percent_change_1h": "1.32",
-      "percent_change_24h": "10.38",
-      "percent_change_7d": "42.76",
-      "last_updated": "1513495754"
-  }
+lol3
       , {}, function(newCoin){
     console.log(newCoin);
   });
+
+  //PORTS (START)
+    //WEBSITE PORT
+  var PORT = process.env.PORT || 5000
+    //SERVER PORT
+  var port = 8080;
+  //PORTS (END)
