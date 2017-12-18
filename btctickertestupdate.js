@@ -17,6 +17,17 @@ app.use(bodyParser.urlencoded({
 }));
 //PORTMAN ADD-ON (END)
 
+// mongoose connection (START)
+var promise = mongoose.connect('mongodb://localhost/example', {
+  useMongoClient: true,
+  /* other options */
+});
+promise.then(function(db) {
+  /* Use `db`, for instance `db.model()`
+});
+// Or, if you already have a connection
+connection.openUri('mongodb://localhost/myapp', { /* options */ });
+// mongoose connection (END)
 
 
 
@@ -60,10 +71,10 @@ var getbtcticker = function(){request.get('https://api.coinmarketcap.com/v1/tick
     percent_change_24h = parsedData[0].percent_change_24h;
     percent_change_7d = parsedData[0].percent_change_7d;
     last_updated= parsedData[0].last_updated;
-    
+    console.log(price_usd);
 
 
-    //console.log(h24_volume_us);
+    //console.log(price_usd);
     //var lol1 = new Array();
     // lol1=btcticker;
      //var myJSON = JSON.stringify(btcticker);
@@ -80,7 +91,7 @@ var interval = setInterval(getbtcticker, 10000)
 
 
 
-Coin.findByIdAndUpdate("5a34b7c60c162c5ea0601337",
+Coin.findByIdAndUpdate("5a37e67f7e0399582df0b9b0",
   {
       "id": "bitcoin",
       "name": name,
