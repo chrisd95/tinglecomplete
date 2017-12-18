@@ -117,8 +117,8 @@ app.get('/coins/:id', function(req, res) {
       if(err) {
         res.send('error occured')
       } else {
-        console.log(coins);
-        res.json(coins);
+        console.log(coins.price_usd);
+        res.json(coins.price_usd);
       }
     });
 });
@@ -130,7 +130,7 @@ var upbtcticker = function(){Coin.findByIdAndUpdate("5a34b7c60c162c5ea0601337",
       "name": "Bitcoin",
       "symbol": "BTC",
       "rank": "1",
-      "price_usd": "202403402",
+      "price_usd": "okokokok",
       "price_btc": "1.0",
       "24h_volume_usd": "14404400000.0",
       "market_cap_usd": "331053789610",
