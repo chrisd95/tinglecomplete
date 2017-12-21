@@ -1,6 +1,4 @@
 //btcticker looped
-var lol2;
-var lol3;
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -30,15 +28,6 @@ promise.then(function(db) {
 connection.openUri('mongodb://localhost/myapp', { /* options */ });
 // mongoose connection (END)
 
-//VIEW ENGINE EJS (START)
-express()
-  .use(express.static(path.join(__dirname, 'public')))
-  .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('./btctickertestupdate',{upbtcticker:lol2}))
-  .listen(PORT, () => console.log(`EJS displayed at port ${ PORT }`))
-//VIEW ENGINE EJS (END)
-
 
 
 //models
@@ -50,24 +39,42 @@ var Coin = require('./models/Coin.model');
 var getbtcticker = function(){request.get('https://api.coinmarketcap.com/v1/ticker/bitcoin/',
   function(error,response, body) {
     var btcticker = (body);
-    lol1 = btcticker
-    fs.writeFileSync('cmc.json', lol1, finished);
+    
+    fs.writeFileSync('cmc.json', btcticker, finished);
       function finished(err){
       }
 })}
+var btcticker = JSON.parse(fs.readFileSync('cmc.json', 'utf8'));
+var map = new Map(Object.entries(btcticker));
+
+var mapContent = map.get("0");
+var arr3= Object.values(mapContent);
+
 
 
 var interval = setInterval(getbtcticker, 10000)
 //HTTP request BTCTICKER (END)
 
-fs.readFile('./cmc.json', 'utf8', function(error, data) {
-  var lol2 = (data);
-  var lol2 = data.replace('[','').replace(']','');
-  console.log(lol2);
-})
-lol3 = bodyParser(lol2)
-Coin.findByIdAndUpdate("5a34b7c60c162c5ea0601337",
-lol3
+
+
+Coin.findByIdAndUpdate("5a3afea97e0399582df0b9ba",
+{
+  "id": arr3[0], 
+  "name": arr3[1], 
+  "symbol": arr3[2], 
+  "rank": arr3[3], 
+  "price_usd": arr3[4], 
+  "price_btc": arr3[5], 
+  "24h_volume_usd": arr3[6], 
+  "market_cap_usd": arr3[7], 
+  "available_supply": arr3[8], 
+  "total_supply": arr3[9], 
+  "max_supply": arr3[10], 
+  "percent_change_1h": arr3[11], 
+  "percent_change_24h": arr3[12], 
+  "percent_change_7d": arr3[13], 
+  "last_updated": arr3[14]
+}
       , {}, function(newCoin){
     console.log(newCoin);
   });
@@ -78,3 +85,5 @@ lol3
     //SERVER PORT
   var port = 8080;
   //PORTS (END)
+
+  
