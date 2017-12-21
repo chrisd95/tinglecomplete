@@ -63,22 +63,8 @@ app.get('/', function(req, res) {
 //SERVER PORT MSG (END)
 
 
-
-
-//DISPLAY HTTP request BTCTICKER (START)
-request.get('http://localhost:8080/coins/5a34b7c60c162c5ea0601337',
-  function(error,response, body) {
-    var btcticker = (body);
-    lol = btcticker
-    fs.writeFileSync('cointicker.json', lol, finished);
-      function finished(err){
-      }
-})
-
-
-
 //looped getbtcticker
-var getbtcticker = function(){request.get('http://localhost:8080/coins/5a34b7c60c162c5ea0601337',
+var getbtcticker = function(){request.get('http://localhost:8080/coins/5a3afea97e0399582df0b9ba',
   function(error,response, body) {
     var btcticker = (body);
     lol = btcticker
@@ -117,38 +103,11 @@ app.get('/coins/:id', function(req, res) {
       if(err) {
         res.send('error occured')
       } else {
-        console.log(coins);
-        res.json(coins);
+        console.log(coins.price_usd);
+        res.json(coins.price_usd);
       }
     });
 });
-//GET. SINGLE API (END)
-
-var upbtcticker = function(){Coin.findByIdAndUpdate("5a34b7c60c162c5ea0601337",
-  {
-      "id": "bitcoin",
-      "name": "Bitcoin",
-      "symbol": "BTC",
-      "rank": "1",
-      "price_usd": "202403402",
-      "price_btc": "1.0",
-      "24h_volume_usd": "14404400000.0",
-      "market_cap_usd": "331053789610",
-      "available_supply": "16746700.0",
-      "total_supply": "16746700.0",
-      "max_supply": "21000000.0",
-      "percent_change_1h": "1.32",
-      "percent_change_24h": "10.38",
-      "percent_change_7d": "42.76",
-      "last_updated": "1513495754"
-  }
-      , {}, function(newCoin){
-    console.log(newCoin);
-  });}
-
-  var interval1 = setInterval(upbtcticker, 5000)
-
-
 
 
 //UPDATE COINS (START)
@@ -219,3 +178,46 @@ app.delete('/book/:id', function(req, res) {
 app.listen(port, function() {
   console.log('Server displaying on port ' + port);
 });
+
+//bitcoin ticker
+//looped getbtcticker
+var getbtcticker = function(){request.get('https://api.coinmarketcap.com/v1/ticker/bitcoin/',
+function(error,response, body) {
+  var btcticker = (body);
+  
+  fs.writeFileSync('cmc.json', btcticker, finished);
+    function finished(err){
+    }
+})}
+var btcticker = JSON.parse(fs.readFileSync('cmc.json', 'utf8'));
+var map = new Map(Object.entries(btcticker));
+
+var mapContent = map.get("0");
+var arr3= Object.values(mapContent);
+
+
+
+var interval = setInterval(getbtcticker, 10000)
+//HTTP request BTCTICKER (END)
+
+Coin.findByIdAndUpdate("5a3afea97e0399582df0b9ba",
+{
+  "id": arr3[0], 
+  "name": arr3[1], 
+  "symbol": arr3[2], 
+  "rank": arr3[3], 
+  "price_usd": arr3[4], 
+  "price_btc": arr3[5], 
+  "24h_volume_usd": arr3[6], 
+  "market_cap_usd": arr3[7], 
+  "available_supply": arr3[8], 
+  "total_supply": arr3[9], 
+  "max_supply": arr3[10], 
+  "percent_change_1h": arr3[11], 
+  "percent_change_24h": arr3[12], 
+  "percent_change_7d": arr3[13], 
+  "last_updated": arr3[14]
+}
+      , {}, function(newCoin){
+    console.log(newCoin);
+  });
