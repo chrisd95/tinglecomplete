@@ -44,16 +44,11 @@
         max-height: 100%;
       }
 .center {
-        margin: auto;
-        width: 100%;
-      }
-.centerb {
-        display: inline;
-        position: absolute;
-        margin: auto;
-        width: 100%;
-            }
+        margin-left: 5%;
+        margin-top: 5%;
+        width: 90%;
 
+        }
 /*This is the styling for wrapper*/
 
 .wrapper {
@@ -69,13 +64,13 @@
 }
 
 .content-wrapper img{
-    width: 100%;
+    width: 90%;
 }
 
 .text-wrapper{
     width: 100%;
     position: absolute;
-    margin-top: -6vw;
+    margin-top: -5.5vw;
 }
 
 .text-wrapper h1{
@@ -132,12 +127,18 @@
       	transform: perspective( 600px ) rotateY( 0deg );
       };
 
-/*This is the styling for the coin prices */
+/*Card container size*/
+.bigContainerCard {
+  height: min-content;
+  background-color: yellow;
+};
 
-//*End page style**//
+
+
+/*End page style**/
 .endPage {
   font-family: Helvetica;
   font-size: 1.5vw;
   color: #DACF63;
   max-width: 50%;
-  margin: 0em auto 0.5em;}
+  margin: 0em auto 0.5em;};

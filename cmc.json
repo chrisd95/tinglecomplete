@@ -4,16 +4,16 @@
         "name": "Bitcoin", 
         "symbol": "BTC", 
         "rank": "1", 
-        "price_usd": "15447.5", 
+        "price_usd": "15491.3", 
         "price_btc": "1.0", 
-        "24h_volume_usd": "14649900000.0", 
-        "market_cap_usd": "258888128188", 
-        "available_supply": "16759225.0", 
-        "total_supply": "16759225.0", 
+        "24h_volume_usd": "14405200000.0", 
+        "market_cap_usd": "259622956808", 
+        "available_supply": "16759275.0", 
+        "total_supply": "16759275.0", 
         "max_supply": "21000000.0", 
-        "percent_change_1h": "2.01", 
-        "percent_change_24h": "10.54", 
+        "percent_change_1h": "0.44", 
+        "percent_change_24h": "7.51", 
         "percent_change_7d": "-19.47", 
-        "last_updated": "1514062156"
+        "last_updated": "1514066053"
     }
 ]
