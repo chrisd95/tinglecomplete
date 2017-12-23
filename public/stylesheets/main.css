@@ -1,6 +1,6 @@
 .pageCenter {
   background: white;
-  padding-bottom: 0 im; }
+  padding-bottom: 0 vw; }
   .pageCenter .btn-primary {
     background: #A0A0A0;
     border-color: #C0BFBF; }
@@ -24,20 +24,29 @@
 .programStatus {
   /* Sous-titre (programStatus) */
   font-family: Helvetica;
-  font-size: 1vw;
-  color: #000000;
+  font-style: italic;
+  font-size: 1.2vw;
+  color: #777777;
   max-width: 50%;
   margin: 0em auto 0.5em;}
 
-/*Added fit style to fit images*/
+/*Tingle's logo's style*/
+.logoTingle{
+  max-height: 10vw;
+  max-width: 10vw;
+  min-height: 10vw;
+  min-width: : 10vw;
+}
+
+/*Added fit style to fit card's images*/
 .fit {
-        max-width: 25%;
-        max-height: 25%;
+        max-width: 90%;
+        max-height: 90%;
       }
 .center {
         display: block;
-        margin-top: 10%;
-        margin-left: 0%;
+        margin-top: 5%;
+        margin-left: 5%;
       }
 .centerb {
               display: inline;
@@ -67,32 +76,30 @@
 .text-wrapper{
     width: 100%;
     position: absolute;
-    margin-top: -40%;
+    margin-top: -70%;
 }
 
 .text-wrapper h1{
     text-align: center;
     color: #000000;
-    font-size: 2vw;
+    font-size: 1vw;
     font-family: 'Merriweather', serif;
 }
 
-
-
 /*This is the styling for the icon boxes*/
-.flip3D{ float: left; width: 8.33%; height: 50px; margin-right: 0px; margin-bottom: 0px }
+.flip3D{ float: left; width: 8.33%; height: 8.33vw; margin-right: 0px; margin-bottom: 0px }
 
 .flip3D > .front{
       	position:absolute;
       	transform: perspective( 1000px ) rotateY( 0deg );
-      	background:#ea6248; width:59.5im; height:59.5im; border-radius: 0px;
+      	background:#ea6248; width:8.33vw; height:8.33vw; border-radius: 0px;
       	backface-visibility: hidden;
       	transition: transform .2s linear 0s;
       }
       .flip3D > .back{
       	position:absolute;
       	transform: perspective( 1000px ) rotateY( 180deg );
-      	background: #ffbfbf; width:59.5im; height:59.5im; border-radius: 0px;
+      	background: #ffbfbf; width:8.33vw; height:8.33vw; border-radius: 0px;
       	backface-visibility: hidden;
       	transition: transform .2s linear 0s;
       }
@@ -104,18 +111,18 @@
       }
 
 /*This is the styling for the icon boxes b (checker-style array)*/
-.flip3Db{ float: left; width: 8.33%; height: 102.5px; margin-right: 0px; margin-bottom: 0px }
+.flip3Db{ float: left; width: 8.33%; height: 8.33vw; margin-right: 0px; margin-bottom: 0px }
       .flip3Db > .front{
       	position:absolute;
       	transform: perspective( 1000px ) rotateY( 0deg );
-      	background:#fca400; width:59.5im; height:59.5im; border-radius: 0px;
+      	background:#fca400; width:8.33vw; height:8.33vw; border-radius: 0px;
       	backface-visibility: hidden;
       	transition: transform .15s linear 0s;
       }
       .flip3Db > .back{
       	position:absolute;
       	transform: perspective( 600px ) rotateY( 180deg );
-      	background: #fce9c7; width:59.5im; height:59.5im; border-radius: 0px;
+      	background: #fce9c7; width:8.33vw; height:8.33vw; border-radius: 0px;
       	backface-visibility: hidden;
       	transition: transform .15s linear 0s;
       }
@@ -127,3 +134,11 @@
       };
 
 /*This is the styling for the coin prices */
+
+//*End page style**//
+.endPage {
+  font-family: Helvetica;
+  font-size: 1.5vw;
+  color: #DACF63;
+  max-width: 50%;
+  margin: 0em auto 0.5em;}
