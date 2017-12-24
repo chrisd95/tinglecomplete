@@ -2,247 +2,244 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Tingle DEX</title>
+  <title>Tingle (Home)</title>
   <link rel="stylesheet" href="main.css">
   <link href="https://fonts.googleapis.com/css?family=Itim|Merriweather" rel="stylesheet">
   <% include ../partials/header.ejs %>
 </head>
-
 <body>
-
   <% include ../partials/nav.ejs %>
+<!-- Central part of the site -->
+  <!-- TINGLE + LOGO (IMG) -->
+  <div class="pageCenter text-center">
+      <div id="titleContainer">
+        <a href="/" class="lang-logo">
+          <img class= "logoTingle" src="/lang-logo.png">
+        </a>
+      </div>
+      <!-- Motto under the title -->
+      <div class=motocontainer>
+        <p class="motto"> <b>A Decentralised Cryptocurrency Exchange </p>
+        <p class="programStatus">Launching soon. Stay tuned.</b></p>
+        <br>
+        <a type="button" class="btn btn-lg btn-default" href="https://github.com/chrisd95/tingle2">
+        <span class="glyphicon glyphicon-flash"></span> Getting Started with Tingle</a>
+        <a type="button" class="btn btn-lg btn-primary" href="https://www.reddit.com/">
+        <span class="glyphicon glyphicon-download"></span> Join our Reddit</a>
+      </div>
+  </div>
+<hr>
 
-<div class="jumbotron text-center">
-  <div class="container">
-    <a href="/" class="lang-logo">
-      <img src="/lang-logo.png">
-    </a>
-    <p>A Decentralised Cryptocurrency Exchange</p>
-    <a type="button" class="btn btn-lg btn-default" href="https://github.com/chrisd95/tingle2"><span class="glyphicon glyphicon-flash"></span> Getting Started with Tingle</a>
-    <a type="button" class="btn btn-lg btn-primary" href="https://www.reddit.com/"><span class="glyphicon glyphicon-download"></span> Join our Reddit</a>
-  </div>
-</div>
-<!--Added a wrapper to the coin icons-->
-<div class="flip3D">
-  <div class="back"><img id="btcwhite" class="center fit" src="/btcwhite.png">
-    <div class="text-wrapper">
-        <h1><%=btcticker%></h1>
+<div class="bigContainerCard">
+      <!--First Cards row-->
+    <div class="containerCarda">
+      <div class="flip3D">
+        <div class="back"><img id="btcwhite" class="center fit" src="/btcwhite.png">
+          <div class="text-wrapper">
+              <h1><%=btcticker%></h1>
+          </div>
+        </div>
+        <div class="front"><img id="btcwhite" class="center fit" src="/btcwhite.png"></div>
+      </div>
+      <div class="flip3Db">
+        <div class="back"><img id="ethwhite" class="center fit" src="/ethwhite.png">
+          <div class="text-wrapper">
+              <h1><%=ethticker%></h1>
+          </div>
+        </div>
+        <div class="front"><img id="ethwhite" class="center fit" src="/ethwhite.png"></div>
+      </div>
+      <div class="flip3D">
+        <div class="back"><img id="bchwhite" class="center fit" src="/bchwhite.png">
+          <div class="text-wrapper">
+              <h1><%=bchticker%></h1>
+          </div>
+        </div>
+        <div class="front"><img id="bchwhite" class="center fit" src="/bchwhite.png"></div>
+      </div>
+      <div class="flip3Db">
+        <div class="back"><img id="ltcwhite" class="center fit" src="/ltcwhite.png">
+          <div class="text-wrapper">
+              <h1><%=ltcticker%></h1>
+          </div>
+        </div>
+        <div class="front"><img id="ltcwhite" class="center fit" src="/ltcwhite.png"></div>
+      </div>
+      <div class="flip3D">
+        <div class="back"><img id="xrpwhite" class="center fit" src="/xrpwhite.png">
+          <div class="text-wrapper">
+              <h1><%=xrpticker%></h1>
+          </div>
+        </div>
+        <div class="front"><img id="xrpwhite" class="center fit" src="/xrpwhite.png"></div>
+      </div>
+      <div class="flip3Db">
+        <div class="back"><img id="miotawhite" class="center fit" src="/miotawhite.png">
+          <div class="text-wrapper">
+              <h1><%=miotaticker%></h1>
+          </div>
+        </div>
+        <div class="front"><img id="miotawhite" class="center fit" src="/miotawhite.png"></div>
+      </div>
+      <div class="flip3D">
+        <div class="back"><img id="dashwhite" class="center fit" src="/dashwhite.png">
+          <div class="text-wrapper">
+              <h1><%=dashticker%></h1>
+          </div>
+        </div>
+        <div class="front"><img id="dashwhite" class="center fit" src="/dashwhite.png"></div>
+      </div>
+      <div class="flip3Db">
+        <div class="back"><img id="xemwhite" class="center fit" src="/xemwhite.png">
+          <div class="text-wrapper">
+              <h1><%=xemticker%></h1>
+          </div>
+        </div>
+        <div class="front"><img id="xemwhite" class="center fit" src="/xemwhite.png"></div>
+      </div>
+      <div class="flip3D">
+        <div class="back"><img id="xmrwhite" class="center fit" src="/xmrwhite.png">
+          <div class="text-wrapper">
+              <h1>308.95$USD</h1>
+          </div>
+        </div>
+        <div class="front"><img id="xmrwhite" class="center fit" src="/xmrwhite.png"></div>
+      </div>
+      <div class="flip3Db">
+        <div class="back"><img id="btgwhite" class="center fit" src="/btgwhite.png">
+          <div class="text-wrapper">
+              <h1><%=btgticker%></h1>
+          </div>
+        </div>
+        <div class="front"><img id="btgwhite" class="center fit" src="/btgwhite.png"></div>
+      </div>
+      <div class="flip3D">
+        <div class="back"><img id="adawhite" class="center fit" src="/adawhite.png">
+          <div class="text-wrapper">
+              <h1><%=adaticker%></h1>
+          </div>
+        </div>
+        <div class="front"><img id="adawhite" class="center fit" src="/adawhite.png"></div>
+      </div>
+      <div class="flip3Db">
+        <div class="back"><img id="etcwhite" class="center fit" src="/etcwhite.png">
+          <div class="text-wrapper">
+              <h1>30.23$USD</h1>
+          </div>
+        </div>
+        <div class="front"><img id="etcwhite" class="center fit" src="/etcwhite.png"></div>
+      </div>
     </div>
-  </div>
-  <div class="front"><img id="btcwhite" class="center fit" src="/btcwhite.png"></div>
-</div>
-<div class="flip3Db">
-  <div class="back"><img id="ethwhite" class="center fit" src="/ethwhite.png">
-    <div class="text-wrapper">
-        <h1>763.54$USD</h1>
+      <!--Second Cards row-->
+    <div class="containerCardb">
+        <div class="flip3Db">
+          <div class="back"><img id="eoswhite" class="center fit" src="/eoswhite.png">
+            <div class="text-wrapper">
+              <h1>6.42$USD</h1>
+            </div>
+          </div>
+          <div class="front"><img id="eoswhite" class="center fit" src="/eoswhite.png"></div>
+        </div>
+        <div class="flip3D">
+          <div class="back"><img id="xlmwhite" class="center fit" src="/xlmwhite.png">
+            <div class="text-wrapper">
+              <h1>0.15$USD</h1>
+            </div>
+          </div>
+          <div class="front"><img id="xlmwhite" class="center fit" src="/xlmwhite.png"></div>
+        </div>
+        <div class="flip3Db">
+          <div class="back"><img id="neowhite" class="center fit" src="/neowhite.png">
+            <div class="text-wrapper">
+              <h1>39.84$USD</h1>
+            </div>
+          </div>
+          <div class="front"><img id="neowhite" class="center fit" src="/neowhite.png"></div>
+        </div>
+        <div class="flip3D">
+          <div class="back"><img id="bccwhite" class="center fit" src="/bccwhite.png">
+            <div class="text-wrapper">
+              <h1>366.15$USD</h1>
+            </div>
+          </div>
+          <div class="front"><img id="bccwhite" class="center fit" src="/bccwhite.png"></div>
+        </div>
+        <div class="flip3Db">
+          <div class="back"><img id="pptwhite" class="center fit" src="/pptwhite.png">
+            <div class="text-wrapper">
+              <h1>38.82$USD</h1>
+            </div>
+          </div>
+          <div class="front"><img id="pptwhite" class="center fit" src="/pptwhite.png"></div>
+        </div>
+        <div class="flip3D">
+          <div class="back"><img id="waveswhite" class="center fit" src="/waveswhite.png">
+            <div class="text-wrapper">
+              <h1>14.20$USD</h1>
+            </div>
+          </div>
+          <div class="front"><img id="waveswhite" class="center fit" src="/waveswhite.png">
+          </div>
+        </div>
+        <div class="flip3Db">
+          <div class="back"><img id="qtumwhite" class="center fit" src="/qtumwhite.png">
+            <div class="text-wrapper">
+              <h1>17.09$USD</h1>
+            </div>
+          </div>
+          <div class="front"><img id="qtumwhite" class="center fit" src="/qtumwhite.png"></div>
+        </div>
+        <div class="flip3D">
+          <div class="back"><img id="lskwhite" class="center fit" src="/lskwhite.png">
+            <div class="text-wrapper">
+              <h1>9.50$USD</h1>
+            </div>
+          </div>
+          <div class="front"><img id="lskwhite" class="center fit" src="/lskwhite.png"></div>
+        </div>
+        <div class="flip3Db">
+          <div class="back"><img id="omgwhite" class="center fit" src="/omgwhite.png">
+            <div class="text-wrapper">
+              <h1>10.64$USD</h1>
+            </div>
+          </div>
+          <div class="front"><img id="omgwhite" class="center fit" src="/omgwhite.png"></div>
+        </div>
+        <div class="flip3D">
+          <div class="back"><img id="ardrwhite" class="center fit" src="/ardrwhite.png">
+            <div class="text-wrapper">
+              <h1>0.95$USD</h1>
+            </div>
+          </div>
+          <div class="front"><img id="ardrwhite" class="center fit" src="/ardrwhite.png"></div>
+        </div>
+        <div class="flip3Db">
+          <div class="back"><img id="zecwhite" class="center fit" src="/zecwhite.png">
+            <div class="text-wrapper">
+              <h1>395.19$USD</h1>
+            </div>
+          </div>
+          <div class="front"><img id="zecwhite" class="center fit" src="/zecwhite.png"></div>
+        </div>
+        <div class="flip3D">
+          <div class="back"><img id="stratwhite" class="center fit" src="/stratwhite.png">
+            <div class="text-wrapper">
+              <h1>9.39$USD</h1>
+            </div>
+          </div>
+          <div class="front"><img id="stratwhite" class="center fit" src="/stratwhite.png"></div>
+        </div>
     </div>
-  </div>
-  <div class="front"><img id="ethwhite" class="center fit" src="/ethwhite.png"></div>
+<br><br><br><br><br><br><br><br>
 </div>
-<div class="flip3D">
-  <div class="back"><img id="bchwhite" class="center fit" src="/bchwhite.png">
-    <div class="text-wrapper">
-        <h1>1459.20$USD</h1>
-    </div>
-  </div>
-  <div class="front"><img id="bchwhite" class="center fit" src="/bchwhite.png"></div>
-</div>
-<div class="flip3Db">
-  <div class="back"><img id="ltcwhite" class="center fit" src="/ltcwhite.png">
-    <div class="text-wrapper">
-        <h1>306.11$USD</h1>
-    </div>
-  </div>
-  <div class="front"><img id="ltcwhite" class="center fit" src="/ltcwhite.png"></div>
-</div>
-<div class="flip3D">
-  <div class="back"><img id="xrpwhite" class="center fit" src="/xrpwhite.png">
-    <div class="text-wrapper">
-        <h1>0.45$USD</h1>
-    </div>
-  </div>
-  <div class="front"><img id="xrpwhite" class="center fit" src="/xrpwhite.png"></div>
-</div>
-<div class="flip3Db">
-  <div class="back"><img id="miotawhite" class="center fit" src="/miotawhite.png">
-    <div class="text-wrapper">
-        <h1>4.08$USD</h1>
-    </div>
-  </div>
-  <div class="front"><img id="miotawhite" class="center fit" src="/miotawhite.png"></div>
-</div>
-<!--End of plugged flippy boxes-->
+<!-- End of Card section -->
 
-<!--End of plugged flippy boxes row 2 beginning-->
-<div class="flip3Db">
-  <div class="back"><img id="dashwhite" class="center fit" src="/dashwhite.png">
-    <div class="text-wrapper">
-        <h1>886.09$USD</h1>
-    </div>
-  </div>
-  <div class="front"><img id="dashwhite" class="center fit" src="/dashwhite.png"></div>
-</div>
-<div class="flip3D">
-  <div class="back"><img id="xemwhite" class="center fit" src="/xemwhite.png">
-    <div class="text-wrapper">
-        <h1>0.53$USD</h1>
-    </div>
-  </div>
-  <div class="front"><img id="xemwhite" class="center fit" src="/xemwhite.png"></div>
-</div>
-<div class="flip3Db">
-  <div class="back"><img id="xmrwhite" class="center fit" src="/xmrwhite.png">
-    <div class="text-wrapper">
-        <h1>308.95$USD</h1>
-    </div>
-  </div>
-  <div class="front"><img id="xmrwhite" class="center fit" src="/xmrwhite.png"></div>
-</div>
-<div class="flip3D">
-  <div class="back"><img id="btgwhite" class="center fit" src="/btgwhite.png">
-    <div class="text-wrapper">
-        <h1>274.40$USD</h1>
-    </div>
-  </div>
-  <div class="front"><img id="btgwhite" class="center fit" src="/btgwhite.png"></div>
-</div>
-<div class="flip3Db">
-  <div class="back"><img id="adawhite" class="center fit" src="/adawhite.png">
-    <div class="text-wrapper">
-        <h1>0.14$USD</h1>
-    </div>
-  </div>
-  <div class="front"><img id="adawhite" class="center fit" src="/adawhite.png"></div>
-</div>
-<div class="flip3D">
-  <div class="back"><img id="etcwhite" class="center fit" src="/etcwhite.png">
-    <div class="text-wrapper">
-        <h1>30.23$USD</h1>
-    </div>
-  </div>
-  <div class="front"><img id="etcwhite" class="center fit" src="/etcwhite.png"></div>
-</div>
-<!--End of plugged flippy boxes row 3 beginning-->
-
-<div class="flip3D">
-  <div class="back"><img id="eoswhite" class="center fit" src="/eoswhite.png">
-    <div class="text-wrapper">
-        <h1>6.42$USD</h1>
-    </div>
-  </div>
-  <div class="front"><img id="eoswhite" class="center fit" src="/eoswhite.png"></div>
-</div>
-<div class="flip3Db">
-  <div class="back"><img id="xlmwhite" class="center fit" src="/xlmwhite.png">
-    <div class="text-wrapper">
-        <h1>0.15$USD</h1>
-    </div>
-  </div>
-  <div class="front"><img id="xlmwhite" class="center fit" src="/xlmwhite.png"></div>
-</div>
-<div class="flip3D">
-  <div class="back"><img id="neowhite" class="center fit" src="/neowhite.png">
-    <div class="text-wrapper">
-        <h1>39.84$USD</h1>
-    </div>
-  </div>
-  <div class="front"><img id="neowhite" class="center fit" src="/neowhite.png"></div>
-</div>
-<div class="flip3Db">
-  <div class="back"><img id="bccwhite" class="center fit" src="/bccwhite.png">
-    <div class="text-wrapper">
-        <h1>366.15$USD</h1>
-    </div>
-  </div>
-  <div class="front"><img id="bccwhite" class="center fit" src="/bccwhite.png"></div>
-</div>
-<div class="flip3D">
-  <div class="back"><img id="pptwhite" class="center fit" src="/pptwhite.png">
-    <div class="text-wrapper">
-        <h1>38.82$USD</h1>
-    </div>
-  </div>
-  <div class="front"><img id="pptwhite" class="center fit" src="/pptwhite.png"></div>
-</div>
-<div class="flip3Db">
-  <div class="back"><img id="waveswhite" class="center fit" src="/waveswhite.png">
-    <div class="text-wrapper">
-        <h1>14.20$USD</h1>
-    </div>
-  </div>
-  <div class="front"><img id="waveswhite" class="center fit" src="/waveswhite.png"></div>
-</div>
-<!--End of plugged flippy boxes row 3 end-->
-
-<div class="flip3Db">
-  <div class="back"><img id="qtumwhite" class="center fit" src="/qtumwhite.png">
-    <div class="text-wrapper">
-        <h1>17.09$USD</h1>
-    </div>
-  </div>
-  <div class="front"><img id="qtumwhite" class="center fit" src="/qtumwhite.png"></div>
-</div>
-<div class="flip3D">
-  <div class="back"><img id="lskwhite" class="center fit" src="/lskwhite.png">
-    <div class="text-wrapper">
-        <h1>9.50$USD</h1>
-    </div>
-  </div>
-  <div class="front"><img id="lskwhite" class="center fit" src="/lskwhite.png"></div>
-</div>
-<div class="flip3Db">
-  <div class="back"><img id="omgwhite" class="center fit" src="/omgwhite.png">
-    <div class="text-wrapper">
-        <h1>10.64$USD</h1>
-    </div>
-  </div>
-  <div class="front"><img id="omgwhite" class="center fit" src="/omgwhite.png"></div>
-</div>
-<div class="flip3D">
-  <div class="back"><img id="ardrwhite" class="center fit" src="/ardrwhite.png">
-    <div class="text-wrapper">
-        <h1>0.95$USD</h1>
-    </div>
-  </div>
-  <div class="front"><img id="ardrwhite" class="center fit" src="/ardrwhite.png"></div>
-</div>
-<div class="flip3Db">
-  <div class="back"><img id="zecwhite" class="center fit" src="/zecwhite.png">
-    <div class="text-wrapper">
-        <h1>395.19$USD</h1>
-    </div>
-  </div>
-  <div class="front"><img id="zecwhite" class="center fit" src="/zecwhite.png"></div>
-</div>
-<div class="flip3D">
-  <div class="back"><img id="stratwhite" class="center fit" src="/stratwhite.png">
-    <div class="text-wrapper">
-        <h1>9.39$USD</h1>
-    </div>
-  </div>
-  <div class="front"><img id="stratwhite" class="center fit" src="/stratwhite.png"></div>
-</div>
-<!--End of plugged flippy boxes row 4 end-->
-
-<!--This is the only way I know how to add breaks-->
-<p><br>
-<br>
-</p>
-<p><br>
-<br>
-</p>
-
-<div class="container">
-  <div class="alert alert-info text-center" role="alert">
-    Launching soon. Stay tuned.
-  </div>
-  <hr>
-  <div class="row">
+<hr>
+  <div class="endPage">
     <div class="col-md-6">
-      <h3><span class="glyphicon glyphicon-info-sign"></span> Let's Tingle.</h3>
-      <ul>
+      <h3 class="endPage"><span class="glyphicon glyphicon-info-sign"></span> Let's Tingle.</h3>
+      <ul class="endPage">
         <li>Tingle is a decentralised exchange platform (DEX) for cryptocurrencies powered by the <a href="https://neo.org/">NEO Blockchain</a>.</li>
-
         <li>When cryptocurrencies are sent to the Tingle platform, they are converted into their Tingle equivalent, allowing them to travel at lightning speed.</li>
         <li>Keeping your Tingles on the platform generate Sweat Tokens.</li>
         <li>Sweat Tokens power the Tingle platform, it is the currency in which transaction fees and system fees are paid and redistributed to Tingle owners.</li>
@@ -268,11 +265,10 @@
       </ul>
     </div>
   </div> <!-- row -->
+
    <div class="alert alert-info text-center" role="alert">
      Still here? Join our discord channel.
-  </div>
-</div>
-
+   </div>
 
 </body>
 </html>

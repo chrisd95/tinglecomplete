@@ -1,18 +1,14 @@
-var fs = require('fs');
-
+//HTTP request BTCTICKER (START)
 const request = require('request')
-request.get('https://api.bitfinex.com/v1/pubticker/BTCUSD',
-  function(error, response, body) {
-    var data = JSON.stringify(body);
-    fs.writeFileSync('cointicker.json', body, finished);
+var fs = require('fs')
+
+
+var cmcapi = function (){request.get('https://api.coinmarketcap.com/v1/ticker/?limit=10',
+  function(error,response, body) {
+    var cmcapi = (body)
+    fs.writeFileSync('limit10.json', cmcapi, finished);
       function finished(err){
       }
-})
+})}
 
-
-var data = fs.readFileSync('cointicker.json');
-var cointicker = JSON.parse(data)
-
-console.log(cointicker);
-
-console.log('BTCUSD price was updated.')
+var interval = setInterval(cmcapi, 7000)
