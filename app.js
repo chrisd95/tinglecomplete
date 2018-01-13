@@ -19,6 +19,7 @@ var dashtick;
 var miotatick;
 var xemtick;
 var btgtick;
+var eostick;
 
 //dependencies and requires (END)
 var app = express();
@@ -109,7 +110,8 @@ app.get('/', function(req, res){
       dashticker: dashtick,
       miotaticker: miotatick,
       xemticker: xemtick,
-      btgticker: btgtick
+      btgticker: btgtick,
+      eosticker: eostick
     });
   });
 });
@@ -119,7 +121,7 @@ app.get('/', function(req, res){
 
 
 //GET own API (START)
-var getbtcticker = function(){request.get('http://localhost:5000/coins/5a3d7f7cf36d2805ea5111fe',
+var getbtcticker = function(){request.get('http://localhost:5000/coins/bitcoin',
   function(error,response, body) {
     var btcticker = (body);
     btctick = btcticker
@@ -129,7 +131,7 @@ var getbtcticker = function(){request.get('http://localhost:5000/coins/5a3d7f7cf
 })};
 var interval = setInterval(getbtcticker, 6000)
 //
-var getethticker = function(){request.get('http://localhost:5000/coins/5a3d7f95f36d2805ea511214',
+var getethticker = function(){request.get('http://localhost:5000/coins/ethereum',
   function(error,response, body) {
     var ethticker = (body);
     ethtick = ethticker
@@ -139,7 +141,7 @@ var getethticker = function(){request.get('http://localhost:5000/coins/5a3d7f95f
 })};
 var interval = setInterval(getethticker, 6000)
 //
-var getbchticker = function(){request.get('http://localhost:5000/coins/5a3d7faff36d2805ea511220',
+var getbchticker = function(){request.get('http://localhost:5000/coins/bitcoin-cash',
   function(error,response, body) {
     var bchticker = (body);
     bchtick = bchticker
@@ -149,7 +151,7 @@ var getbchticker = function(){request.get('http://localhost:5000/coins/5a3d7faff
 })};
 var interval = setInterval(getbchticker, 6000)
 //
-var getxrpticker = function(){request.get('http://localhost:5000/coins/5a3daa4af36d2805ea5125fa',
+var getxrpticker = function(){request.get('http://localhost:5000/coins/ripple',
   function(error,response, body) {
     var xrpticker = (body);
     xrptick = xrpticker
@@ -159,7 +161,7 @@ var getxrpticker = function(){request.get('http://localhost:5000/coins/5a3daa4af
 })};
 var interval = setInterval(getxrpticker, 6000)
 //
-var getltcticker = function(){request.get('http://localhost:5000/coins/5a3daa65f36d2805ea5125ff',
+var getltcticker = function(){request.get('http://localhost:5000/coins/litecoin',
   function(error,response, body) {
     var ltcticker = (body);
     ltctick = ltcticker
@@ -169,7 +171,7 @@ var getltcticker = function(){request.get('http://localhost:5000/coins/5a3daa65f
 })};
 var interval = setInterval(getltcticker, 6000)
 //
-var getadaticker = function(){request.get('http://localhost:5000/coins/5a3daa7af36d2805ea512601',
+var getadaticker = function(){request.get('http://localhost:5000/coins/cardano',
   function(error,response, body) {
     var adaticker = (body);
     adatick = adaticker
@@ -179,7 +181,7 @@ var getadaticker = function(){request.get('http://localhost:5000/coins/5a3daa7af
 })};
 var interval = setInterval(getadaticker, 6000)
 //
-var getdashticker = function(){request.get('http://localhost:5000/coins/5a3daa87f36d2805ea512604',
+var getdashticker = function(){request.get('http://localhost:5000/coins/dash',
   function(error,response, body) {
     var dashticker = (body);
     dashtick = dashticker
@@ -189,7 +191,7 @@ var getdashticker = function(){request.get('http://localhost:5000/coins/5a3daa87
 })};
 var interval = setInterval(getdashticker, 6000)
 //
-var getmiotaticker = function(){request.get('http://localhost:5000/coins/5a3daaa1f36d2805ea512606',
+var getmiotaticker = function(){request.get('http://localhost:5000/coins/iota',
   function(error,response, body) {
     var miotaticker = (body);
     miotatick = miotaticker
@@ -199,7 +201,7 @@ var getmiotaticker = function(){request.get('http://localhost:5000/coins/5a3daaa
 })};
 var interval = setInterval(getmiotaticker, 6000)
 //
-var getxemticker = function(){request.get('http://localhost:5000/coins/5a3daab0f36d2805ea512607',
+var getxemticker = function(){request.get('http://localhost:5000/coins/nem',
   function(error,response, body) {
     var xemticker = (body);
     xemtick = xemticker
@@ -209,7 +211,7 @@ var getxemticker = function(){request.get('http://localhost:5000/coins/5a3daab0f
 })};
 var interval = setInterval(getxemticker, 6000)
 //
-var getbtgticker = function(){request.get('http://localhost:5000/coins/5a3daac2f36d2805ea512608',
+var getbtgticker = function(){request.get('http://localhost:5000/coins/bitcoin-gold',
   function(error,response, body) {
     var btgticker = (body);
     btgtick = btgticker
@@ -218,6 +220,16 @@ var getbtgticker = function(){request.get('http://localhost:5000/coins/5a3daac2f
       }
 })};
 var interval = setInterval(getbtgticker, 6000)
+//
+var geteosticker = function(){request.get('http://localhost:5000/coins/eos',
+  function(error,response, body) {
+    var eosticker = (body);
+    eostick = eosticker
+    fs.writeFileSync('eosticker.json', eostick, finished);
+      function finished(err){
+      }
+})};
+var interval = setInterval(geteosticker, 6000)
 
 //GET own API (END)
 
@@ -282,7 +294,7 @@ db.mycollection.findOne({
           app.get('/coins/:id', function(req, res) {
             console.log('The price of the coin you searched is ');
             Coin.findOne({
-              _id: req.params.id
+              id: req.params.id
             })
               .exec(function(err, coins) {
                 if(err) {

@@ -36,7 +36,7 @@ var coin6 = map.get("6");
 var coin7 = map.get("7");
 var coin8 = map.get("8");
 var coin9 = map.get("9");
-
+var coin10 = map.get("10");
 
 setTimeout(function t0(){
 Coin.findByIdAndUpdate("5a3d7f7cf36d2805ea5111fe",
@@ -106,6 +106,13 @@ Coin.findByIdAndUpdate("5a3daac2f36d2805ea512608",
 coin9
       , {}, function(newCoin){
     console.log(newCoin);
-  });}, 36000)};
+  });}, 36000);
 
-setInterval(updates,36000)
+  setTimeout(function t8(){
+  Coin.findByIdAndUpdate("5a5938b4734d1d616140406c",
+  coin10
+        , {}, function(newCoin){
+      console.log(newCoin);
+    });}, 40000)};
+
+setInterval(updates,40000)

@@ -3,7 +3,7 @@ var mongoose = require('mongoose')
 var Schema = mongoose.Schema;
 
 var CoinSchema = new Schema({
-  id :String,
+
   name: String,
   symbol: String,
   rank: String,
