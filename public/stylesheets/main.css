@@ -1,6 +1,73 @@
+body{
+  margin:0px;
+}
+.navbar{
+  margin-top: 20px;
+  margin-left: 10px;
+  height: 50px;
+  overflow:hidden;
+  position:relative;
+}
+.navleft{
+  width:auto;
+  height:50px;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: top;
+  align:center;
+}
+.logoTingle2{
+  width:200px;
+}
+.navright{
+  display: inline-block;
+  width:auto;
+  vertical-align: bottom;
+  text-align: left;
+  text-shadow: 0.1px 0.1px black;
+}
+ol#navlist a{
+  font-family: Arial;
+  color:black;
+  text-decoration: none;
+  font-weight: bold;
+  font-variant-caps: all-small-caps;
+}
+ol#navlist a:hover{
+  font-family: Arial;
+  color:white;
+}
+ol#navlist{
+  list-style-type: none;
+  margin:0px;
+}
+ol#navlist li{
+    display:inline;
+    vertical-align: bottom;
+    margin:30px;
+    font-size: 1em;
+}
+.mottoandstatusnav{
+  text-align: center;
+  height: auto;
+  width: auto;
+  display: block;
+  margin-top: 15px;
+  background-color: #FA0303;
+}
+p#motto {
+  /* Sous-titre (programStatus) */
+  font-family: Helvetica;
+  font-size: 1em;
+  color: #DACF63;
+  margin-left: 10px;
+  margin-top:0px;
+  margin-bottom: 0px;
+  text-align: center;
+}
 .pageCenter {
   background: white;
-  padding-bottom: 0 vw; }
+ }
   .pageCenter .btn-primary {
     background: #A0A0A0;
     border-color: #C0BFBF; }
@@ -14,30 +81,42 @@
       border: 0px solid white; }
   .pageCenter .lang-logo img {
         max-width: 50%; }
-.motto {
-  /* Sous-titre (programStatus) */
-  font-family: Helvetica;
-  font-size: 1.5vw;
-  color: #DACF63;
-  max-width: 50%;
-  margin: 0em auto 0.5em;}
 .programStatus {
   /* Sous-titre (programStatus) */
   font-family: Helvetica;
   font-style: italic;
   font-size: 1.2vw;
-  color: #777777;
-  max-width: 50%;
-  margin: 0em auto 0.5em;}
-
-/*Tingle's logo's style*/
-.logoTingle{
-  max-height: 10vw;
-  max-width: 10vw;
-  min-height: 10vw;
-  min-width: : 10vw;
+  color: black;
+  margin: 0px;}
+div#aboutTingleContainer{
+  height:300px;
+  overflow: hidden;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/4/47/Montreal_Twilight_Panorama_2006.jpg");
+  background-attachment: fixed;
+  background-position: bottom;
+  padding: 0px;
+  }
+img#bkgAbout{
+  max-width: 100%;
 }
-
+.aboutTingle{
+  height:300px;
+  background-color: rgba(192,192,192, 0.3);
+  display: block;
+  margin-top: 0px;
+}
+div#aboutTingle a:hover{
+  background-color: rgba(192,192,192, 0.8);
+}
+.aboutTingleText{
+  margin:0px;
+  opacity: 1;
+  padding: 30px;
+}
+div#joinTingleContainer{
+  height:30px;
+  border: 1px solid black;
+}
 /*Added fit style to fit card's images*/
 .fit {
         max-width: 100%;
@@ -50,39 +129,37 @@
 
         }
 /*This is the styling for wrapper*/
-
 .wrapper {
   width: 0px;
   margin: 0px ;
 }
-
 /*This is the styling for centering the prices on the cards*/
-
 .content-wrapper{
     width: 80%;
     margin: auto;
 }
-
 .content-wrapper img{
     width: 90%;
 }
-
 .text-wrapper{
     width: 100%;
     position: absolute;
     margin-top: -5.5vw;
 }
-
 .text-wrapper h1{
     text-align: center;
     color: #000000;
     font-size: 1vw;
     font-family: 'Merriweather', serif;
 }
-
 /*This is the styling for the icon boxes*/
-.flip3D{ float: left; width: 8.33%; height: 8.33vw; margin-right: 0px; margin-bottom: 0px }
-
+.flip3D{
+  float: left;
+  width: 8.33%;
+  height: 8.33vw;
+  margin-right: 0px;
+  margin-bottom: 0px;
+}
 .flip3D > .front{
       	position:absolute;
       	transform: perspective( 1000px ) rotateY( 0deg );
@@ -103,38 +180,39 @@
       .flip3D:hover > .back{
       	transform: perspective( 600px ) rotateY( 0deg );
       }
-
 /*This is the styling for the icon boxes b (checker-style array)*/
-.flip3Db{ float: left; width: 8.33%; height: 8.33vw; margin-right: 0px; margin-bottom: 0px }
-      .flip3Db > .front{
+.flip3Db{
+  float: left;
+  width: 8.33%;
+  height: 8.33vw;
+  margin-right: 0px;
+  margin-bottom: 0px
+}
+.flip3Db > .front{
       	position:absolute;
       	transform: perspective( 1000px ) rotateY( 0deg );
       	background:#fca400; width:8.33vw; height:8.33vw; border-radius: 0px;
       	backface-visibility: hidden;
       	transition: transform .15s linear 0s;
-      }
-      .flip3Db > .back{
+}
+.flip3Db > .back{
       	position:absolute;
       	transform: perspective( 600px ) rotateY( 180deg );
       	background: #fce9c7; width:8.33vw; height:8.33vw; border-radius: 0px;
       	backface-visibility: hidden;
       	transition: transform .15s linear 0s;
-      }
-      .flip3Db:hover > .front{
+}
+.flip3Db:hover > .front{
       	transform: perspective( 600px ) rotateY( -180deg );
-      }
-      .flip3Db:hover > .back{
+}
+.flip3Db:hover > .back{
       	transform: perspective( 600px ) rotateY( 0deg );
-      };
-
+};
 /*Card container size*/
 .bigContainerCard {
   height: min-content;
   background-color: yellow;
 };
-
-
-
 /*End page style**/
 .endPage {
   font-family: Helvetica;

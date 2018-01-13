@@ -1,27 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+
   <title>Tingle (Home)</title>
-  <link rel="stylesheet" href="main.css">
-  <link href="https://fonts.googleapis.com/css?family=Itim|Merriweather" rel="stylesheet">
   <% include ../partials/header.ejs %>
 </head>
 <body>
-  <% include ../partials/nav.ejs %>
+  <!-- Nav bar-->
+  <div class="navbar">
+    <div class="navleft">
+      <a href="/">
+        <img class="logoTingle2" src="/lang-logo.png">
+      </a>
+    </div><!--
+    --><div class="navright">
+    <div id="navRightTop">
+      <p id="motto">A Decentralised Cryptocurrency Exchange</p>
+    </div>
+    <div id="navRightBottom">
+      <ol id="navlist">
+        <li><a href="/">Meet the team</a></li>
+        <li><a href="/">Slack</a></li>
+        <li><a href="/">Services</a></li>
+        <li><a href="/">Whitepaper</a></li>
+        <li><a href="/">Contact Us</a></li>
+      </ol>
+    </div>
+    </div>
+  </div>
+  <div class="mottoandstatusnav">
+    <p class="programStatus">Launching soon. Stay tuned.</p>
+  </div>
 <!-- Central part of the site -->
-  <!-- TINGLE + LOGO (IMG) -->
+<!--What's Tingle?-->
+  <div id="aboutTingleContainer">
+    <div class="aboutTingle">
+      <div class="aboutTingleText">
+        <a>Tingle is a decentralised exchange platform (DEX) for cryptocurrencies powered by the NEO Blockchain.
+          When cryptocurrencies are sent to the Tingle platform, they are converted into their Tingle equivalent, allowing them to travel at lightning speed.
+          Keeping your Tingles on the platform generate Sweat Tokens. Sweat Tokens power the Tingle platform,
+          it is the currency in which transaction fees and system fees are paid and redistributed to Tingle owners</a>
+      </div>
+    </div>
+  </div>
+<!--Join us!-->
+  <div id="joinTingleContainer">
+
+  </div>
+
   <div class="pageCenter text-center">
       <div id="titleContainer">
-        <a href="/" class="lang-logo">
-          <img class= "logoTingle" src="/lang-logo.png">
-        </a>
-      </div>
-      <!-- Motto under the title -->
-      <div class=motocontainer>
-        <p class="motto"> <b>A Decentralised Cryptocurrency Exchange </p>
-        <p class="programStatus">Launching soon. Stay tuned.</b></p>
-        <br>
+        <a href="https://neo.org/">NEO</a>
         <a type="button" class="btn btn-lg btn-default" href="https://github.com/chrisd95/tingle2">
         <span class="glyphicon glyphicon-flash"></span> Getting Started with Tingle</a>
         <a type="button" class="btn btn-lg btn-primary" href="https://www.reddit.com/">
