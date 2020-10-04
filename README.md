@@ -2,4 +2,4 @@
 
 coinmarketcap API integration with websockets
 
-Live mode:https://tinglefixedmobile.herokuapp.com/
+Live mode: failed. mLab deprecated
