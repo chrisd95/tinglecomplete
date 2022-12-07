@@ -9,7 +9,7 @@
   "dependencies": {
     "body-parser": "*",
     "ejs": "^2.5.7",
-    "express": "^4.16.2",
+    "express": "^4.17.3",
     "express-validator": "*",
     "mongojs": "^2.4.1",
     "mongoose": "^4.13.7",
